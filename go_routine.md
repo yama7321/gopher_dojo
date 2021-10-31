@@ -36,8 +36,11 @@ go func() {
 - チャネルの容量がいっぱいだと、受け取るまでブロックする。
 
 ### 初期化
+
+```
 ch1 := make(chan int)
 ch2 := make(chan int, 10)
+```
 
 ### 送信
 ch1 <- 10 ←受け取られるまでブロック(容量0だから)
@@ -115,3 +118,18 @@ select {
 ### コンテキスト
 - Contextインターフェース
 - ゴールーチンをまたいだキャンセル処理
+- ゴールーチンをまたいで値を共有する
+- Deadline, Done, Err, Value
+
+### コンテキストの歴史
+- appengine.Context
+- golang.org/x/net/context.Context
+- context.Context 
+→ Go1.7からはGo標準のコンテキスト
+
+### コンテキストとキャンセル処理
+- ツリー構造
+- ゴールーチンをまたいだ処理のキャンセルに使う
+
+### コンテキストに値を持たせる　
+- WithValueで値をもたせる
